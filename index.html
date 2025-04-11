@@ -21,6 +21,8 @@
             justify-content: center;
             height: 100vh;
             text-align: center;
+            position: relative;
+            z-index: 2;
         }
 
         .main-text {
@@ -30,6 +32,16 @@
             padding: 20px;
             background-color: rgba(0, 0, 0, 0.5);
             border-radius: 10px;
+        }
+        
+        .sub-header {
+            font-size: 1em; /* Smaller scale than the main header */
+            margin-top: 10px;
+        }
+
+        .sub-header a {
+            color: white;
+            text-decoration: underline;
         }
 
         .subheading {
@@ -45,6 +57,7 @@
             font-size: 1.5em;
             color: #00FFFF;
             animation: bounce 2s infinite;
+            z-index: 2;
         }
 
         .arrow-text {
@@ -55,6 +68,29 @@
             font-size: 1.7em;
             color: #000000;
             text-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+            z-index: 2;
+        }
+
+        .bottom-panel {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            height: 300px;
+            background: rgba(0, 0, 0, 0.7);
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            z-index: 1;
+            width: 100%;
+        }
+
+        /* Desktop styles: panel occupies 1/3 of screen width and is centered */
+        @media (min-width: 992px) {
+            .bottom-panel {
+                width: 33.33%;
+                left: 33.33%;
+            }
         }
 
         @keyframes bounce {
@@ -72,10 +108,18 @@
 </head>
 <body>
     <div class="content">
-        <div class="main-text">Hlasový asistent pre parkovanie v TRNAVE</div>
-        <div class="subheading"></a></div>
+        <div class="main-text">
+            Hlasový asistent pre parkovanie v TRNAVE
+            <div class="sub-header">
+                Naša webstránka : <a href="https://www.impofai.com" target="_blank">www.impofai.com</a>
+            </div>
+        </div>
+        <div class="subheading"></div>
     </div>
     <div class="arrow-text">Vyskúšajte kliknutím na tlačidlo</div>
+    
+    <!-- Background panel behind text and widget -->
+    <div class="bottom-panel"></div>
 
     <!-- The rest of your script remains unchanged -->
     <script>
