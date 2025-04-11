@@ -22,7 +22,7 @@
             height: 100vh;
             text-align: center;
             position: relative;
-            z-index: 2;
+            z-index: 1; /* znížené */
         }
 
         .main-text {
@@ -35,7 +35,7 @@
         }
 
         .sub-header {
-            font-size: 0.8em; /* Made smaller */
+            font-size: 0.8em;
             margin-top: 10px;
         }
 
@@ -57,7 +57,7 @@
             font-size: 1.5em;
             color: #00FFFF;
             animation: bounce 2s infinite;
-            z-index: 2;
+            z-index: 1; /* znížené */
         }
 
         .arrow-text {
@@ -68,7 +68,7 @@
             font-size: 1.7em;
             color: #000000;
             text-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
-            z-index: 2;
+            z-index: 1; /* znížené */
         }
 
         @keyframes bounce {
@@ -96,27 +96,28 @@
     </div>
     <div class="arrow-text">Vyskúšajte kliknutím na tlačidlo</div>
 
-    <!-- The rest of your script remains unchanged -->
+    <!-- Widget script -->
     <script>
       var vapiInstance = null;
       const assistant = "6e06d612-45b9-4f81-99c0-3bb4ec199c1c";
       const apiKey = "8b5f180a-38eb-4798-af3e-ba8c1320df25";
-      const buttonConfig = {}; // Modify this as required
-    
+      const buttonConfig = {
+        position: "bottom-right" // ak chceš špecifikovať
+      };
+
       (function (d, t) {
         var g = document.createElement(t),
-          s = d.getElementsByTagName(t)[0];
-        g.src =
-          "https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js";
+            s = d.getElementsByTagName(t)[0];
+        g.src = "https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js";
         g.defer = true;
         g.async = true;
         s.parentNode.insertBefore(g, s);
-    
+
         g.onload = function () {
           vapiInstance = window.vapiSDK.run({
             apiKey: apiKey,
             assistant: assistant,
-            config: buttonConfig, // optional
+            config: buttonConfig
           });
         };
       })(document, "script");
